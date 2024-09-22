@@ -3,6 +3,7 @@
     /* === Colors === */
     --Red: hsl(0, 100%, 74%);
     --Green: hsl(154, 59%, 51%);
+    --Light-Green: hsl(154, 65%, 68%);
     --Blue: hsl(248, 32%, 49%);
     --Dark-Blue: hsl(249, 10%, 26%);
     --Grayish-Blue: hsl(246, 25%, 77%);
@@ -33,6 +34,7 @@ body{
     align-items: center;
     flex-grow: 1;
     padding: 88px 24px 60px 24px;
+    width: 100%;
 }
 .hero{
     margin-bottom: 64px;
@@ -117,7 +119,6 @@ body{
     outline: var(--Blue) auto 1px;
     caret-color: var(--Blue);
 }
-
 .error--icon{
     position: absolute;
     top:15px;
@@ -149,6 +150,11 @@ body{
     border: none;
     border-radius: 5px;
     box-shadow: 0 4px 0 0 hsla(153, 57%, 46%, 1);
+    cursor: pointer;
+}
+.btn:active, .btn:focus, .btn:hover{
+    background-color: var(--Light-Green);
+    box-shadow: 0 4px 0 0 hsla(154, 50%, 62%, 1);
 }
 .caution{
     padding: 0 15px;
@@ -172,4 +178,36 @@ body{
     font-weight: 600;
     letter-spacing: 1px;
     color: var(--Blue);
+}
+@media(min-width: 992px){
+    .main{
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        flex-grow: 1;
+        padding: 121px 24px;
+        gap: 45px
+    }
+    .hero{
+        margin-bottom: 0;
+        text-align: left;
+    }
+    .hero--title{
+        margin: 0 0 11px 0;
+        font-size: 50px;
+        line-height: 55px;
+        letter-spacing: -0.52px;
+    }
+    .form--content{
+        padding: 40px;
+    }
+    .myForm{
+        gap: 20px;
+    }
+    .input{
+        padding-left: 32px;
+    }
+    .error--icon{
+        right: 24px;
+    }
 }
