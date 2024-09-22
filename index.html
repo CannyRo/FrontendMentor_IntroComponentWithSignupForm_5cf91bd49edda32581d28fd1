@@ -36,14 +36,14 @@
           <div class="form--control">
             <input type="text" name="email" id="email" placeholder="Email Address" class="input">
             <img src="./images/icon-error.svg" alt="Warning icon" class="error--icon">
-            <p id="emailError" class="error--message">Looks like this is not an email</p>
+            <p id="emailError" class="error--message"></p>
           </div>
           <div class="form--control">
             <input type="password" name="password" id="password" placeholder="Password" class="input">
             <img src="./images/icon-error.svg" alt="Warning icon" class="error--icon">
             <p id="passwordError" class="error--message">Password cannot be empty</p>
           </div>
-          <input type="button" id="submit" value="Claim your free trial" class="btn">
+          <input type="submit" form="myForm" id="mySubmit" value="Claim your free trial" class="btn">
           <small class="caution">By clicking the button, you are agreeing to our <span class="caution-accent">Terms and
               Services</span></small>
         </form>
@@ -57,6 +57,7 @@
       <p>Coded by <a href="https://cannyro.github.io/hire_mr_canny/en" class="footer--link">WhatCannyDev</a>.</p>
     </div>
   </footer>
+  <script src="app.js"></script>
 </body>
 
 </html>
