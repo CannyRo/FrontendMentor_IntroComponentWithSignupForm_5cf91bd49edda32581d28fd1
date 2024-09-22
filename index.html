@@ -4,14 +4,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- displays site properly based on user's device -->
-
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-
+  <link rel="stylesheet" href="normalize.css">
+  <link rel="stylesheet" href="style.css">
   <title>Frontend Mentor | Intro component with sign up form</title>
-
 </head>
-
 <body>
   <main class="main">
     <section class="hero">
@@ -24,10 +21,26 @@
         <p class="form--title">Try it free 7 days then $20/mo. thereafter</p>
       </div>
       <div class="form--content">
-        <input type="text" name="firstname" id="firstname" placeholder="First Name">
-        <input type="text" name="lastname" id="lastname" placeholder="Last Name">
-        <input type="text" name="email" id="email" placeholder="Email Address">
-        <input type="password" name="password" id="password" placeholder="Password">
+        <div class="form--control">
+          <input type="text" name="firstname" id="firstname" placeholder="First Name">
+          <img src="./images/icon-error.svg" alt="Warning icon" class="error--icon">
+          <p id="firstnameError" class="error--message"></p>
+        </div>
+        <div class="form--control">
+          <input type="text" name="lastname" id="lastname" placeholder="Last Name">
+          <img src="./images/icon-error.svg" alt="Warning icon" class="error--icon">
+          <p id="lastnameError" class="error--message"></p>
+        </div>
+        <div class="form--control">
+          <input type="text" name="email" id="email" placeholder="Email Address">
+          <img src="./images/icon-error.svg" alt="Warning icon" class="error--icon">
+          <p id="emailError" class="error--message"></p>
+        </div>
+        <div class="form--control">
+          <input type="password" name="password" id="password" placeholder="Password">
+          <img src="./images/icon-error.svg" alt="Warning icon" class="error--icon">
+          <p id="passwordError" class="error--message"></p>
+        </div>
         <input type="button" id="submit" value="Claim your free trial">
         <small class="caution">By clicking the button, you are agreeing to our <span class="caution-accent">Terms and Services</span></small>
       </div>

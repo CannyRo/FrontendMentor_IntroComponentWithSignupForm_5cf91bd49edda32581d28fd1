@@ -9,3 +9,17 @@
     /* === Fonts === */
     --main-font: 'Poppins';
 }
+body{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: var(--Red);
+    background-image: url('./images/bg-intro-desktop.png');
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+    background-position: center;
+    font-family: var(--main-font), 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
