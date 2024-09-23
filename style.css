@@ -121,12 +121,14 @@ body{
 }
 .error--icon{
     position: absolute;
+    display: none;
     top:15px;
     right: 14px;
     width: 24px;
     height: 24px;
 }
 .error--message{
+    display: none;
     margin-top: 6px;
     color: var(--Red);
     font-size: 11px;
@@ -178,6 +180,12 @@ body{
     font-weight: 600;
     letter-spacing: 1px;
     color: var(--Blue);
+}
+.error--outline{
+    outline: var(--Red) auto 1px;
+}
+.error--visible{
+    display: flex;
 }
 @media(min-width: 992px){
     .main{
