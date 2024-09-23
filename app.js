@@ -42,16 +42,17 @@ function app() {
     console.log("App on");
     message = "";
     console.log(nodeTable);
-    console.log(nodeTable[1].nodeElement.id);
+    // console.log(nodeTable[1].nodeElement.id);
     submitForm();
   }
   function isEmpty(node) {
-    console.log(`Node : ${node}, Value : ${node.value}`);
+    console.log(`Node : ${node.id}, Value : ${node.value}`);
     if (
       node.value !== null &&
       node.value !== undefined &&
       node.value.trim() !== ""
     ) {
+      console.log("Not null, not undefined, not empty")
       return false;
     }
     return true;
@@ -64,53 +65,89 @@ function app() {
     }
     return false;
   }
-  function showError(node) {
-    if (node.tagName == "input") {
-      node.classList.add("error--outline");
-    } else {
-      node.classList.add("error--visible");
-    }
-  }
   function controlInput(index) {
+    console.log("=================");
+    console.log("FOO => ", index);
+    console.log("isOK ? (before checked) ", index.isOk);
     console.log("ID targeted : ", index.nodeElement.id);
     console.log("Value targeted : ", index.nodeElement.value);
-    if ((index.nodeElement.id == "email")) {
-      if (isEmpty(index.nodeElement)) {
+    if(isEmpty(index.nodeElement)){
+      console.log(" is Empty ? : ", isEmpty(index.nodeElement));
+      if(index.nodeElement.id == "email"){
         emailMessageError = "Email Address cannot be empty";
-        emailError.textContent = emailMessageError;
-        index.nodeElement.isOK = false;
-        return;
-      } else if (isEmail(index.nodeElement.value)) {
-        emailMessageError = "Looks like this is not an email";
-        emailError.textContent = emailMessageError;
-        index.nodeElement.isOK = false;
-        return;
-      } else {
-        index.nodeElement.isOK = true;
-        return;
+        console.log(emailMessageError);
       }
-    } else {
-      if (isEmpty(index.nodeElement)) {
-        index.nodeElement.isOK = false;
-        return;
-      } else {
-        index.nodeElement.isOK = true;
-        return;
-      }
+      index.isOk = false;
+      return;
+    }
+    if(index.nodeElement.id == "email" && !isEmail(index.nodeElement.value)){
+      console.log(" is Email ? : ",isEmail(index.nodeElement.value));
+      emailMessageError = "Looks like this is not an email";
+      console.log(emailMessageError);
+      index.isOk = false;
+      return;
+    }
+    index.isOk = true;
+  }
+  function showError(index, event) {
+    if(index.nodeElement.id == "email"){
+      const emailMessageErrorContainer = document.getElementById("emailError");
+      emailMessageErrorContainer.textContent = emailMessageError;
+    }
+    if(!index.isOk){
+      // console.log("index ==> ",index);
+        index.nodeElement.classList.add("error--outline");
+        let errorIcon = document.getElementById(index.nodeElement.id).nextSibling.nextSibling;
+        errorIcon.classList.add("error--visible");
+        // console.log("errorIcon targeted ===> ", errorIcon);
+        // console.log("errorIcon.id => ", errorIcon.id);
+        // index.nodeElement.nextSibling.nextSibling.classList.add("error-visible");
+        let errorMessage = document.getElementById(errorIcon.id).nextSibling.nextSibling;
+        errorMessage.classList.add("error--visible");
+        // console.log("errorMessage targeted ===> ", errorMessage);
+
+        event.preventDefault();
     }
   }
-  function controlError(index) {
-    if(!index.nodeElement.isOK){
-        index.nodeElement.classList.add("error--outline");
-        index.nodeElement.nextSibling.add("error--visible");
-        index.nodeElement.nextSibling.nextSibling.add("error-visible");
-        e.preventDefault();
+  function clear(index) {
+    console.log("Clear of ", index.nodeElement.id);
+    if(index.nodeElement.id == "email"){
+      const emailMessageErrorContainer = document.getElementById("emailError");
+      emailMessageErrorContainer.textContent = "";
+      emailMessageError = "";
     }
+    index.nodeElement.classList.contains("error--outline") && index.nodeElement.classList.remove("error--outline");
+    let errorIcon = document.getElementById(index.nodeElement.id).nextSibling.nextSibling;
+    errorIcon.classList.contains("error--visible") && errorIcon.classList.remove("error--visible");
+    let errorMessage = document.getElementById(errorIcon.id).nextSibling.nextSibling;
+    errorMessage.classList.contains("error--visible") && errorMessage.classList.remove("error--visible");
+  }
+  function hideError() {
+    nodeTable = [
+      {
+        nodeElement: firstnameInput,
+        isOk: false,
+      },
+      {
+        nodeElement: lastnameInput,
+        isOk: false,
+      },
+      {
+        nodeElement: emailInput,
+        isOk: false,
+      },
+      {
+        nodeElement: passwordInput,
+        isOk: false,
+      },
+    ];
+    nodeTable.map(inputTargeted => clear(inputTargeted));
   }
   function submitForm() {
     emailMessageError = "";
     formNode.addEventListener("submit", (e) => {
-      e.preventDefault();
+      hideError();
+      // e.preventDefault();
       // Init the node array with all "isOK" value to "FALSE" before checking them
       nodeTable = [
         {
@@ -130,14 +167,9 @@ function app() {
           isOk: false,
         },
       ];
-      nodeTable.map( inputTargeted => {
-        let targetId = inputTargeted.nodeElement.id;
-        let targetNode = document.getElementById("targetId");
-        console.log("inputTargeted ID", inputTargeted.nodeElement.id);
-        console.log("inputTargeted value", inputTargeted.nodeElement.value);
-        controlInput(inputTargeted);
-      })
+      nodeTable.map(inputTargeted => controlInput(inputTargeted));
       console.log("nodeTable ==> ", nodeTable);
+      nodeTable.map( inputTargeted => showError(inputTargeted, e));
     });
   }
 }

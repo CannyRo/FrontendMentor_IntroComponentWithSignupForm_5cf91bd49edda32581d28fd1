@@ -22,25 +22,25 @@
         <p class="form--title"><span class="form--title-accent">Try it free 7 days</span> then $20/mo. thereafter</p>
       </div>
       <div class="form--content">
-        <form action="" id="myForm" class="myForm">
+        <form action="" id="myForm" class="myForm" method="get">
           <div class="form--control">
             <input type="text" name="firstname" id="firstname" placeholder="First Name" class="input">
-            <img src="./images/icon-error.svg" alt="Warning icon" class="error--icon">
+            <img src="./images/icon-error.svg" alt="Warning icon" id="firstnameIconError" class="error--icon">
             <p id="firstnameError" class="error--message">First Name cannot be empty</p>
           </div>
           <div class="form--control">
             <input type="text" name="lastname" id="lastname" placeholder="Last Name" class="input">
-            <img src="./images/icon-error.svg" alt="Warning icon" class="error--icon">
+            <img src="./images/icon-error.svg" alt="Warning icon" id="lastnameIconError" class="error--icon">
             <p id="lastnameError" class="error--message">Last Name cannot be empty</p>
           </div>
           <div class="form--control">
             <input type="text" name="email" id="email" placeholder="Email Address" class="input">
-            <img src="./images/icon-error.svg" alt="Warning icon" class="error--icon">
+            <img src="./images/icon-error.svg" alt="Warning icon" id="emailIconError" class="error--icon">
             <p id="emailError" class="error--message"></p>
           </div>
           <div class="form--control">
             <input type="password" name="password" id="password" placeholder="Password" class="input">
-            <img src="./images/icon-error.svg" alt="Warning icon" class="error--icon">
+            <img src="./images/icon-error.svg" alt="Warning icon" id="passwordIconError" class="error--icon">
             <p id="passwordError" class="error--message">Password cannot be empty</p>
           </div>
           <input type="submit" form="myForm" id="mySubmit" value="Claim your free trial" class="btn">
