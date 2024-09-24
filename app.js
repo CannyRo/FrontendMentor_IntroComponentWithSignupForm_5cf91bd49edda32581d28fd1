@@ -53,7 +53,6 @@ function app() {
   //// => Sequence of isEmpty(), isEmail(), cleanError()
   function controlAndShowError(node){
     let messageErrorContainer = document.getElementById(node.id).nextSibling.nextSibling.nextSibling.nextSibling;
-    console.log(messageErrorContainer);
     if(isEmpty(node)){
       if(node.id == "email"){
         emailMessageError = "Email Address cannot be empty";
